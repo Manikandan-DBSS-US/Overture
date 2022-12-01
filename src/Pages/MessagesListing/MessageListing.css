@@ -1,0 +1,13 @@
+.pagination-input-box{
+    width: 50px;
+    padding: 3px;
+    border-radius: 5px;
+    border: solid 0.5px;
+    height: 35px;
+    border-color: rgb(202, 201, 201);
+    outline: none;
+}
+
+.pagination-btn{
+    height: 35px;
+}

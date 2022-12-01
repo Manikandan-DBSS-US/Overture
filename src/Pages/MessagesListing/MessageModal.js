@@ -12,6 +12,7 @@ export const MessageModal = ({
   handleNextBtn,
   handlePrevBtn,
   currentPage,
+  setCurrentPage
 }) => {
   return (
     <div>
@@ -71,6 +72,7 @@ export const MessageModal = ({
               </div>
             </div>
             {/* Pagination Box */}
+            <div className="">
             <MessagePagination
               messagePerPage={messagePerPage}
               totalMessage={totalMessage}
@@ -80,7 +82,9 @@ export const MessageModal = ({
               handleNextBtn={handleNextBtn}
               handlePrevBtn={handlePrevBtn}
               currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
             />
+            </div>
           </div>
         </div>
       </div>

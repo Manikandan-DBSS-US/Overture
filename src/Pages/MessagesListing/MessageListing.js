@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { MessageModal } from "./MessageModal";
+import "../MessagesListing/MessageListing.css";
 
 export const MessageListing = ({ show }) => {
   // Initial message state
@@ -104,6 +105,7 @@ export const MessageListing = ({ show }) => {
             handleNextBtn={handleNextBtn}
             handlePrevBtn={handlePrevBtn}
             currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
           />
         </div>
       </div>

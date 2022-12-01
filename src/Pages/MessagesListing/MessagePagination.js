@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export const MessagePagination = ({
   messagePerPage,
   totalMessage,
@@ -7,7 +9,10 @@ export const MessagePagination = ({
   handleNextBtn,
   handlePrevBtn,
   currentPage,
+  setCurrentPage,
 }) => {
+  const [formPage, setFormPage] = useState("");
+
   // Page Numbers
   const pageNumbers = [];
 
@@ -22,7 +27,7 @@ export const MessagePagination = ({
       return (
         <li class="page-item">
           <a
-            class={` page-link text-dark ${
+            class={` page-link text-dark shadow-none ${
               number === currentPage && "bg-secondary"
             }`}
             href="#"
@@ -37,33 +42,71 @@ export const MessagePagination = ({
     }
   });
 
+  const pageLength = pages.length;
+
+  const handleSubmitPage = (e) => {
+    e.preventDefault();
+    if (formPage > pageLength) {
+      setCurrentPage(currentPage);
+    } else {
+      setCurrentPage(parseInt(formPage));
+    }
+  };
+
+  console.log(typeof formPage);
+
   return (
-    <div className="text-center d-flex justify-content-center">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
+    <div className="d-flex justify-content-between gap-4 mx-5">
+      <div className="d-flex gap-2 mt-2">
+        <span>{currentPage}</span>
+        <span>of</span>
+        <span> {pageLength} </span>
+      </div>
+
+      <div>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <button
+              className="page-item border-0 "
+              disabled={currentPage == pageNumbers[0] ? true : false}
+              onClick={handlePrevBtn}
+            >
+              <button className="page-link text-dark shadow-none">
+                Previous
+              </button>
+            </button>
+            {pages}
+            <button
+              class="page-item border-0 shadow-none"
+              onClick={handleNextBtn}
+              disabled={
+                currentPage == pageNumbers[pageNumbers.length - 1]
+                  ? true
+                  : false
+              }
+            >
+              <button class="page-link text-dark shadow-none" href="#">
+                Next
+              </button>
+            </button>
+          </ul>
+        </nav>
+      </div>
+
+      <div className="mt-1">
+        <form className="d-flex gap-1" onSubmit={handleSubmitPage}>
+          <input
+            className="pagination-input-box text-center"
+            onChange={(e) => setFormPage(e.target.value)}
+          />
           <button
-            class="page-item border-0"
-            disabled={currentPage == pageNumbers[0] ? true : false}
-            onClick={handlePrevBtn}
+            type="submit"
+            className="btn btn-outline-secondary pagination-btn"
           >
-            <a class="page-link text-dark" href="#">
-              Previous
-            </a>
+            Go
           </button>
-          {pages}
-          <button
-            class="page-item border-0"
-            onClick={handleNextBtn}
-            disabled={
-              currentPage == pageNumbers[pageNumbers.length - 1] ? true : false
-            }
-          >
-            <a class="page-link text-dark" href="#">
-              Next
-            </a>
-          </button>
-        </ul>
-      </nav>
+        </form>
+      </div>
     </div>
   );
 };

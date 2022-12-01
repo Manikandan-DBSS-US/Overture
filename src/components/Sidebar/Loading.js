@@ -1,7 +1,7 @@
 export const Loading = () => {
     return (
         <div>
-            <div class="spinner-border" role="status" style={{color: "red"}}>
+            <div class="spinner-border" role="status">
             </div>
         </div>
     )
