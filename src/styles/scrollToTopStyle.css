@@ -1,0 +1,34 @@
+.scroll-to-top {
+  position: relative;
+}
+
+.scroll-to-top .top-btn {
+  height: 3rem;
+  width: 3rem;
+  /* border-radius: 50%; */
+  border-radius: 5px;
+  background: #0a66c2;
+  /* box-shadow: #0a66c2 0px 0px 16px; */
+  box-shadow: #0a66c2 0px 5px 6px;
+  color: #fff;
+  position: fixed;
+  bottom: 4rem;
+  right: 4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-to-top .top-btn .top-btn-icon {
+  animation: scrollToTop 0.75s linear infinite alternate-reverse;
+}
+
+@keyframes scrollToTop {
+  0% {
+    transform: translateY(-0.25rem);
+  }
+  100% {
+    transform: translateY(0.25rem);
+  }
+}
